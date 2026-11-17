@@ -1,68 +1,212 @@
 {
-  "name": "house-dodge",
+  "name": "pinisi-brainrot-bay",
   "tree": {
     "$className": "DataModel",
     "Players": {
       "$properties": {
-        "CharacterAutoLoads": false
+        "CharacterAutoLoads": true
       }
     },
+    "ReplicatedStorage": {
+      "BuyBrainrot": { "$className": "RemoteFunction" },
+      "StealBrainrot": { "$className": "RemoteFunction" },
+      "LockBase": { "$className": "RemoteEvent" },
+      "RequestRebirth": { "$className": "RemoteEvent" },
+      "RequestReroll": { "$className": "RemoteEvent" },
+      "SellBrainrot": { "$className": "RemoteEvent" },
+      "BuyUpgrade": { "$className": "RemoteEvent" },
+      "ClientUpdate": { "$className": "RemoteEvent" }
+    },
     "ServerScriptService": {
-      "Server": {
-        "$path": "src/server"
-      }
+      "Server": { "$path": "src/server" }
     },
     "StarterPlayer": {
       "StarterPlayerScripts": {
-        "Client": {
-          "$path": "src/client"
-        }
+        "Client": { "$path": "src/client" }
       }
     },
     "Workspace": {
-      "$properties": {
-        "FilteringEnabled": true
-      },
-      "Baseplate": {
-        "$className": "Part",
-        "$properties": {
-          "Anchored": true,
-          "Color": [
-            0.38823,
-            0.37254,
-            0.38823
-          ],
-          "Locked": true,
-          "Position": [
-            0,
-            -10,
-            0
-          ],
-          "Size": [
-            512,
-            20,
-            512
-          ]
-        }
-      }
+      "$properties": { "FilteringEnabled": true },
+      "Baseplate": { "$className": "Part", "$properties": { "Anchored": true, "CanCollide": true, "Material": "Grass", "Color": [0.35, 0.75, 0.35], "Position": [0, -1, 0], "Size": [220, 2, 220] } },
+      "Sea": { "$className": "Part", "$properties": { "Anchored": true, "CanCollide": false, "Material": "SmoothPlastic", "Transparency": 0.3, "Color": [0.2, 0.5, 0.95], "Position": [0, -0.2, -102.5], "Size": [220, 1, 15] } },
+      "ConveyorBelt": { "$className": "Part", "$properties": { "Anchored": true, "CanCollide": true, "Material": "SmoothPlastic", "Color": [0.25, 0.25, 0.3], "Position": [0, 0.5, 0], "Size": [10, 1, 120] } },
+      "ConveyorRailLeft": { "$className": "Part", "$properties": { "Anchored": true, "CanCollide": true, "Material": "Metal", "Color": [0.9, 0.7, 0.2], "Position": [-5.3, 1.3, 0], "Size": [0.6, 1.6, 120] } },
+      "ConveyorRailRight": { "$className": "Part", "$properties": { "Anchored": true, "CanCollide": true, "Material": "Metal", "Color": [0.9, 0.7, 0.2], "Position": [5.3, 1.3, 0], "Size": [0.6, 1.6, 120] } },
+      "ConveyorCapNorth": { "$className": "Part", "$properties": { "Anchored": true, "CanCollide": true, "Material": "Metal", "Color": [0.9, 0.7, 0.2], "Position": [0, 0.75, -60.5], "Size": [10, 1.5, 1] } },
+      "ConveyorCapSouth": { "$className": "Part", "$properties": { "Anchored": true, "CanCollide": true, "Material": "Metal", "Color": [0.9, 0.7, 0.2], "Position": [0, 0.75, 60.5], "Size": [10, 1.5, 1] } },
+      "SpawnLocation": { "$className": "SpawnLocation", "$properties": { "Anchored": true, "CanCollide": true, "Material": "Grass", "Color": [0.3, 0.9, 0.4], "Neutral": true, "Duration": 0, "Position": [0, 0.5, 85], "Size": [12, 1, 12] } },
+      "StoneStep1": { "$className": "Part", "$properties": { "Anchored": true, "CanCollide": true, "Material": "Cobblestone", "Color": [0.75, 0.75, 0.75], "Position": [0, 0.15, 78], "Size": [4, 0.3, 4] } },
+      "StoneStep2": { "$className": "Part", "$properties": { "Anchored": true, "CanCollide": true, "Material": "Cobblestone", "Color": [0.75, 0.75, 0.75], "Position": [0, 0.15, 70], "Size": [4, 0.3, 4] } },
+      "StoneStep3": { "$className": "Part", "$properties": { "Anchored": true, "CanCollide": true, "Material": "Cobblestone", "Color": [0.75, 0.75, 0.75], "Position": [0, 0.15, 62], "Size": [4, 0.3, 4] } },
+      "Plot1Floor": { "$className": "Part", "$properties": { "Anchored": true, "Material": "SmoothPlastic", "Color": [1, 0.6, 0.5], "Position": [-26, 0.5, -54], "Size": [20, 1, 20] } },
+      "Plot1WallOuter": { "$className": "Part", "$properties": { "Anchored": true, "Material": "SmoothPlastic", "Color": [0.95, 0.95, 0.95], "Position": [-36, 2, -54], "Size": [1, 2, 20] } },
+      "Plot1WallFront": { "$className": "Part", "$properties": { "Anchored": true, "Material": "SmoothPlastic", "Color": [0.95, 0.95, 0.95], "Position": [-26, 2, -64], "Size": [20, 2, 1] } },
+      "Plot1WallBack": { "$className": "Part", "$properties": { "Anchored": true, "Material": "SmoothPlastic", "Color": [0.95, 0.95, 0.95], "Position": [-26, 2, -44], "Size": [20, 2, 1] } },
+      "Plot1SignPole": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Wood", "Color": [0.55, 0.35, 0.2], "Position": [-17, 2.5, -63], "Size": [0.5, 3, 0.5] } },
+      "Plot1SignBoard": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Wood", "Color": [1, 1, 1], "Position": [-17, 4.6, -63], "Size": [5, 2.5, 0.3] } },
+      "Plot1Pad1": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.85, 0.45, 0.35], "Position": [-32, 1.1, -58], "Size": [3, 0.2, 3] } },
+      "Plot1Pad2": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.85, 0.45, 0.35], "Position": [-28, 1.1, -58], "Size": [3, 0.2, 3] } },
+      "Plot1Pad3": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.85, 0.45, 0.35], "Position": [-24, 1.1, -58], "Size": [3, 0.2, 3] } },
+      "Plot1Pad4": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.85, 0.45, 0.35], "Position": [-20, 1.1, -58], "Size": [3, 0.2, 3] } },
+      "Plot1Pad5": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.85, 0.45, 0.35], "Position": [-32, 1.1, -50], "Size": [3, 0.2, 3] } },
+      "Plot1Pad6": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.85, 0.45, 0.35], "Position": [-28, 1.1, -50], "Size": [3, 0.2, 3] } },
+      "Plot1Pad7": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.85, 0.45, 0.35], "Position": [-24, 1.1, -50], "Size": [3, 0.2, 3] } },
+      "Plot1Pad8": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.85, 0.45, 0.35], "Position": [-20, 1.1, -50], "Size": [3, 0.2, 3] } },
+      "Plot2Floor": { "$className": "Part", "$properties": { "Anchored": true, "Material": "SmoothPlastic", "Color": [0.5, 0.8, 1], "Position": [-26, 0.5, -18], "Size": [20, 1, 20] } },
+      "Plot2WallOuter": { "$className": "Part", "$properties": { "Anchored": true, "Material": "SmoothPlastic", "Color": [0.95, 0.95, 0.95], "Position": [-36, 2, -18], "Size": [1, 2, 20] } },
+      "Plot2WallFront": { "$className": "Part", "$properties": { "Anchored": true, "Material": "SmoothPlastic", "Color": [0.95, 0.95, 0.95], "Position": [-26, 2, -28], "Size": [20, 2, 1] } },
+      "Plot2WallBack": { "$className": "Part", "$properties": { "Anchored": true, "Material": "SmoothPlastic", "Color": [0.95, 0.95, 0.95], "Position": [-26, 2, -8], "Size": [20, 2, 1] } },
+      "Plot2SignPole": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Wood", "Color": [0.55, 0.35, 0.2], "Position": [-17, 2.5, -27], "Size": [0.5, 3, 0.5] } },
+      "Plot2SignBoard": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Wood", "Color": [1, 1, 1], "Position": [-17, 4.6, -27], "Size": [5, 2.5, 0.3] } },
+      "Plot2Pad1": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.35, 0.65, 0.85], "Position": [-32, 1.1, -22], "Size": [3, 0.2, 3] } },
+      "Plot2Pad2": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.35, 0.65, 0.85], "Position": [-28, 1.1, -22], "Size": [3, 0.2, 3] } },
+      "Plot2Pad3": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.35, 0.65, 0.85], "Position": [-24, 1.1, -22], "Size": [3, 0.2, 3] } },
+      "Plot2Pad4": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.35, 0.65, 0.85], "Position": [-20, 1.1, -22], "Size": [3, 0.2, 3] } },
+      "Plot2Pad5": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.35, 0.65, 0.85], "Position": [-32, 1.1, -14], "Size": [3, 0.2, 3] } },
+      "Plot2Pad6": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.35, 0.65, 0.85], "Position": [-28, 1.1, -14], "Size": [3, 0.2, 3] } },
+      "Plot2Pad7": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.35, 0.65, 0.85], "Position": [-24, 1.1, -14], "Size": [3, 0.2, 3] } },
+      "Plot2Pad8": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.35, 0.65, 0.85], "Position": [-20, 1.1, -14], "Size": [3, 0.2, 3] } },
+      "Plot3Floor": { "$className": "Part", "$properties": { "Anchored": true, "Material": "SmoothPlastic", "Color": [0.5, 1, 0.7], "Position": [-26, 0.5, 18], "Size": [20, 1, 20] } },
+      "Plot3WallOuter": { "$className": "Part", "$properties": { "Anchored": true, "Material": "SmoothPlastic", "Color": [0.95, 0.95, 0.95], "Position": [-36, 2, 18], "Size": [1, 2, 20] } },
+      "Plot3WallFront": { "$className": "Part", "$properties": { "Anchored": true, "Material": "SmoothPlastic", "Color": [0.95, 0.95, 0.95], "Position": [-26, 2, 8], "Size": [20, 2, 1] } },
+      "Plot3WallBack": { "$className": "Part", "$properties": { "Anchored": true, "Material": "SmoothPlastic", "Color": [0.95, 0.95, 0.95], "Position": [-26, 2, 28], "Size": [20, 2, 1] } },
+      "Plot3SignPole": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Wood", "Color": [0.55, 0.35, 0.2], "Position": [-17, 2.5, 9], "Size": [0.5, 3, 0.5] } },
+      "Plot3SignBoard": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Wood", "Color": [1, 1, 1], "Position": [-17, 4.6, 9], "Size": [5, 2.5, 0.3] } },
+      "Plot3Pad1": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.35, 0.85, 0.55], "Position": [-32, 1.1, 14], "Size": [3, 0.2, 3] } },
+      "Plot3Pad2": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.35, 0.85, 0.55], "Position": [-28, 1.1, 14], "Size": [3, 0.2, 3] } },
+      "Plot3Pad3": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.35, 0.85, 0.55], "Position": [-24, 1.1, 14], "Size": [3, 0.2, 3] } },
+      "Plot3Pad4": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.35, 0.85, 0.55], "Position": [-20, 1.1, 14], "Size": [3, 0.2, 3] } },
+      "Plot3Pad5": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.35, 0.85, 0.55], "Position": [-32, 1.1, 22], "Size": [3, 0.2, 3] } },
+      "Plot3Pad6": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.35, 0.85, 0.55], "Position": [-28, 1.1, 22], "Size": [3, 0.2, 3] } },
+      "Plot3Pad7": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.35, 0.85, 0.55], "Position": [-24, 1.1, 22], "Size": [3, 0.2, 3] } },
+      "Plot3Pad8": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.35, 0.85, 0.55], "Position": [-20, 1.1, 22], "Size": [3, 0.2, 3] } },
+      "Plot4Floor": { "$className": "Part", "$properties": { "Anchored": true, "Material": "SmoothPlastic", "Color": [0.8, 0.6, 1], "Position": [-26, 0.5, 54], "Size": [20, 1, 20] } },
+      "Plot4WallOuter": { "$className": "Part", "$properties": { "Anchored": true, "Material": "SmoothPlastic", "Color": [0.95, 0.95, 0.95], "Position": [-36, 2, 54], "Size": [1, 2, 20] } },
+      "Plot4WallFront": { "$className": "Part", "$properties": { "Anchored": true, "Material": "SmoothPlastic", "Color": [0.95, 0.95, 0.95], "Position": [-26, 2, 44], "Size": [20, 2, 1] } },
+      "Plot4WallBack": { "$className": "Part", "$properties": { "Anchored": true, "Material": "SmoothPlastic", "Color": [0.95, 0.95, 0.95], "Position": [-26, 2, 64], "Size": [20, 2, 1] } },
+      "Plot4SignPole": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Wood", "Color": [0.55, 0.35, 0.2], "Position": [-17, 2.5, 45], "Size": [0.5, 3, 0.5] } },
+      "Plot4SignBoard": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Wood", "Color": [1, 1, 1], "Position": [-17, 4.6, 45], "Size": [5, 2.5, 0.3] } },
+      "Plot4Pad1": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.65, 0.45, 0.85], "Position": [-32, 1.1, 50], "Size": [3, 0.2, 3] } },
+      "Plot4Pad2": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.65, 0.45, 0.85], "Position": [-28, 1.1, 50], "Size": [3, 0.2, 3] } },
+      "Plot4Pad3": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.65, 0.45, 0.85], "Position": [-24, 1.1, 50], "Size": [3, 0.2, 3] } },
+      "Plot4Pad4": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.65, 0.45, 0.85], "Position": [-20, 1.1, 50], "Size": [3, 0.2, 3] } },
+      "Plot4Pad5": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.65, 0.45, 0.85], "Position": [-32, 1.1, 58], "Size": [3, 0.2, 3] } },
+      "Plot4Pad6": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.65, 0.45, 0.85], "Position": [-28, 1.1, 58], "Size": [3, 0.2, 3] } },
+      "Plot4Pad7": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.65, 0.45, 0.85], "Position": [-24, 1.1, 58], "Size": [3, 0.2, 3] } },
+      "Plot4Pad8": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.65, 0.45, 0.85], "Position": [-20, 1.1, 58], "Size": [3, 0.2, 3] } },
+      "Plot5Floor": { "$className": "Part", "$properties": { "Anchored": true, "Material": "SmoothPlastic", "Color": [1, 0.9, 0.6], "Position": [26, 0.5, -54], "Size": [20, 1, 20] } },
+      "Plot5WallOuter": { "$className": "Part", "$properties": { "Anchored": true, "Material": "SmoothPlastic", "Color": [0.95, 0.95, 0.95], "Position": [36, 2, -54], "Size": [1, 2, 20] } },
+      "Plot5WallFront": { "$className": "Part", "$properties": { "Anchored": true, "Material": "SmoothPlastic", "Color": [0.95, 0.95, 0.95], "Position": [26, 2, -64], "Size": [20, 2, 1] } },
+      "Plot5WallBack": { "$className": "Part", "$properties": { "Anchored": true, "Material": "SmoothPlastic", "Color": [0.95, 0.95, 0.95], "Position": [26, 2, -44], "Size": [20, 2, 1] } },
+      "Plot5SignPole": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Wood", "Color": [0.55, 0.35, 0.2], "Position": [17, 2.5, -63], "Size": [0.5, 3, 0.5] } },
+      "Plot5SignBoard": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Wood", "Color": [1, 1, 1], "Position": [17, 4.6, -63], "Size": [5, 2.5, 0.3] } },
+      "Plot5Pad1": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.85, 0.75, 0.45], "Position": [20, 1.1, -58], "Size": [3, 0.2, 3] } },
+      "Plot5Pad2": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.85, 0.75, 0.45], "Position": [24, 1.1, -58], "Size": [3, 0.2, 3] } },
+      "Plot5Pad3": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.85, 0.75, 0.45], "Position": [28, 1.1, -58], "Size": [3, 0.2, 3] } },
+      "Plot5Pad4": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.85, 0.75, 0.45], "Position": [32, 1.1, -58], "Size": [3, 0.2, 3] } },
+      "Plot5Pad5": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.85, 0.75, 0.45], "Position": [20, 1.1, -50], "Size": [3, 0.2, 3] } },
+      "Plot5Pad6": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.85, 0.75, 0.45], "Position": [24, 1.1, -50], "Size": [3, 0.2, 3] } },
+      "Plot5Pad7": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.85, 0.75, 0.45], "Position": [28, 1.1, -50], "Size": [3, 0.2, 3] } },
+      "Plot5Pad8": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.85, 0.75, 0.45], "Position": [32, 1.1, -50], "Size": [3, 0.2, 3] } },
+      "Plot6Floor": { "$className": "Part", "$properties": { "Anchored": true, "Material": "SmoothPlastic", "Color": [1, 0.6, 0.8], "Position": [26, 0.5, -18], "Size": [20, 1, 20] } },
+      "Plot6WallOuter": { "$className": "Part", "$properties": { "Anchored": true, "Material": "SmoothPlastic", "Color": [0.95, 0.95, 0.95], "Position": [36, 2, -18], "Size": [1, 2, 20] } },
+      "Plot6WallFront": { "$className": "Part", "$properties": { "Anchored": true, "Material": "SmoothPlastic", "Color": [0.95, 0.95, 0.95], "Position": [26, 2, -28], "Size": [20, 2, 1] } },
+      "Plot6WallBack": { "$className": "Part", "$properties": { "Anchored": true, "Material": "SmoothPlastic", "Color": [0.95, 0.95, 0.95], "Position": [26, 2, -8], "Size": [20, 2, 1] } },
+      "Plot6SignPole": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Wood", "Color": [0.55, 0.35, 0.2], "Position": [17, 2.5, -27], "Size": [0.5, 3, 0.5] } },
+      "Plot6SignBoard": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Wood", "Color": [1, 1, 1], "Position": [17, 4.6, -27], "Size": [5, 2.5, 0.3] } },
+      "Plot6Pad1": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.85, 0.45, 0.65], "Position": [20, 1.1, -22], "Size": [3, 0.2, 3] } },
+      "Plot6Pad2": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.85, 0.45, 0.65], "Position": [24, 1.1, -22], "Size": [3, 0.2, 3] } },
+      "Plot6Pad3": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.85, 0.45, 0.65], "Position": [28, 1.1, -22], "Size": [3, 0.2, 3] } },
+      "Plot6Pad4": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.85, 0.45, 0.65], "Position": [32, 1.1, -22], "Size": [3, 0.2, 3] } },
+      "Plot6Pad5": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.85, 0.45, 0.65], "Position": [20, 1.1, -14], "Size": [3, 0.2, 3] } },
+      "Plot6Pad6": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.85, 0.45, 0.65], "Position": [24, 1.1, -14], "Size": [3, 0.2, 3] } },
+      "Plot6Pad7": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.85, 0.45, 0.65], "Position": [28, 1.1, -14], "Size": [3, 0.2, 3] } },
+      "Plot6Pad8": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.85, 0.45, 0.65], "Position": [32, 1.1, -14], "Size": [3, 0.2, 3] } },
+      "Plot7Floor": { "$className": "Part", "$properties": { "Anchored": true, "Material": "SmoothPlastic", "Color": [0.7, 1, 0.5], "Position": [26, 0.5, 18], "Size": [20, 1, 20] } },
+      "Plot7WallOuter": { "$className": "Part", "$properties": { "Anchored": true, "Material": "SmoothPlastic", "Color": [0.95, 0.95, 0.95], "Position": [36, 2, 18], "Size": [1, 2, 20] } },
+      "Plot7WallFront": { "$className": "Part", "$properties": { "Anchored": true, "Material": "SmoothPlastic", "Color": [0.95, 0.95, 0.95], "Position": [26, 2, 8], "Size": [20, 2, 1] } },
+      "Plot7WallBack": { "$className": "Part", "$properties": { "Anchored": true, "Material": "SmoothPlastic", "Color": [0.95, 0.95, 0.95], "Position": [26, 2, 28], "Size": [20, 2, 1] } },
+      "Plot7SignPole": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Wood", "Color": [0.55, 0.35, 0.2], "Position": [17, 2.5, 9], "Size": [0.5, 3, 0.5] } },
+      "Plot7SignBoard": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Wood", "Color": [1, 1, 1], "Position": [17, 4.6, 9], "Size": [5, 2.5, 0.3] } },
+      "Plot7Pad1": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.55, 0.85, 0.35], "Position": [20, 1.1, 14], "Size": [3, 0.2, 3] } },
+      "Plot7Pad2": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.55, 0.85, 0.35], "Position": [24, 1.1, 14], "Size": [3, 0.2, 3] } },
+      "Plot7Pad3": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.55, 0.85, 0.35], "Position": [28, 1.1, 14], "Size": [3, 0.2, 3] } },
+      "Plot7Pad4": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.55, 0.85, 0.35], "Position": [32, 1.1, 14], "Size": [3, 0.2, 3] } },
+      "Plot7Pad5": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.55, 0.85, 0.35], "Position": [20, 1.1, 22], "Size": [3, 0.2, 3] } },
+      "Plot7Pad6": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.55, 0.85, 0.35], "Position": [24, 1.1, 22], "Size": [3, 0.2, 3] } },
+      "Plot7Pad7": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.55, 0.85, 0.35], "Position": [28, 1.1, 22], "Size": [3, 0.2, 3] } },
+      "Plot7Pad8": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.55, 0.85, 0.35], "Position": [32, 1.1, 22], "Size": [3, 0.2, 3] } },
+      "Plot8Floor": { "$className": "Part", "$properties": { "Anchored": true, "Material": "SmoothPlastic", "Color": [1, 0.75, 0.5], "Position": [26, 0.5, 54], "Size": [20, 1, 20] } },
+      "Plot8WallOuter": { "$className": "Part", "$properties": { "Anchored": true, "Material": "SmoothPlastic", "Color": [0.95, 0.95, 0.95], "Position": [36, 2, 54], "Size": [1, 2, 20] } },
+      "Plot8WallFront": { "$className": "Part", "$properties": { "Anchored": true, "Material": "SmoothPlastic", "Color": [0.95, 0.95, 0.95], "Position": [26, 2, 44], "Size": [20, 2, 1] } },
+      "Plot8WallBack": { "$className": "Part", "$properties": { "Anchored": true, "Material": "SmoothPlastic", "Color": [0.95, 0.95, 0.95], "Position": [26, 2, 64], "Size": [20, 2, 1] } },
+      "Plot8SignPole": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Wood", "Color": [0.55, 0.35, 0.2], "Position": [17, 2.5, 45], "Size": [0.5, 3, 0.5] } },
+      "Plot8SignBoard": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Wood", "Color": [1, 1, 1], "Position": [17, 4.6, 45], "Size": [5, 2.5, 0.3] } },
+      "Plot8Pad1": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.85, 0.6, 0.35], "Position": [20, 1.1, 50], "Size": [3, 0.2, 3] } },
+      "Plot8Pad2": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.85, 0.6, 0.35], "Position": [24, 1.1, 50], "Size": [3, 0.2, 3] } },
+      "Plot8Pad3": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.85, 0.6, 0.35], "Position": [28, 1.1, 50], "Size": [3, 0.2, 3] } },
+      "Plot8Pad4": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.85, 0.6, 0.35], "Position": [32, 1.1, 50], "Size": [3, 0.2, 3] } },
+      "Plot8Pad5": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.85, 0.6, 0.35], "Position": [20, 1.1, 58], "Size": [3, 0.2, 3] } },
+      "Plot8Pad6": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.85, 0.6, 0.35], "Position": [24, 1.1, 58], "Size": [3, 0.2, 3] } },
+      "Plot8Pad7": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.85, 0.6, 0.35], "Position": [28, 1.1, 58], "Size": [3, 0.2, 3] } },
+      "Plot8Pad8": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Color": [0.85, 0.6, 0.35], "Position": [32, 1.1, 58], "Size": [3, 0.2, 3] } },
+      "Tree1Trunk": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Wood", "Color": [0.55, 0.35, 0.2], "Position": [-60, 3, -80], "Size": [1.5, 6, 1.5] } },
+      "Tree1Leaves": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Grass", "Shape": "Ball", "Color": [0.2, 0.7, 0.3], "Position": [-60, 8.5, -80], "Size": [8, 8, 8] } },
+      "Tree2Trunk": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Wood", "Color": [0.55, 0.35, 0.2], "Position": [60, 3, -80], "Size": [1.5, 6, 1.5] } },
+      "Tree2Leaves": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Grass", "Shape": "Ball", "Color": [0.25, 0.75, 0.3], "Position": [60, 8.5, -80], "Size": [8, 8, 8] } },
+      "Tree3Trunk": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Wood", "Color": [0.55, 0.35, 0.2], "Position": [-70, 3, 0], "Size": [1.5, 6, 1.5] } },
+      "Tree3Leaves": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Grass", "Shape": "Ball", "Color": [0.2, 0.65, 0.35], "Position": [-70, 8.5, 0], "Size": [8, 8, 8] } },
+      "Tree4Trunk": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Wood", "Color": [0.55, 0.35, 0.2], "Position": [70, 3, 0], "Size": [1.5, 6, 1.5] } },
+      "Tree4Leaves": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Grass", "Shape": "Ball", "Color": [0.2, 0.7, 0.3], "Position": [70, 8.5, 0], "Size": [8, 8, 8] } },
+      "Tree5Trunk": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Wood", "Color": [0.55, 0.35, 0.2], "Position": [-60, 3, 80], "Size": [1.5, 6, 1.5] } },
+      "Tree5Leaves": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Grass", "Shape": "Ball", "Color": [0.25, 0.75, 0.3], "Position": [-60, 8.5, 80], "Size": [8, 8, 8] } },
+      "Tree6Trunk": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Wood", "Color": [0.55, 0.35, 0.2], "Position": [60, 3, 80], "Size": [1.5, 6, 1.5] } },
+      "Tree6Leaves": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Grass", "Shape": "Ball", "Color": [0.2, 0.7, 0.3], "Position": [60, 8.5, 80], "Size": [8, 8, 8] } },
+      "Tree7Trunk": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Wood", "Color": [0.55, 0.35, 0.2], "Position": [-90, 3, -40], "Size": [1.5, 6, 1.5] } },
+      "Tree7Leaves": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Grass", "Shape": "Ball", "Color": [0.2, 0.65, 0.35], "Position": [-90, 8.5, -40], "Size": [8, 8, 8] } },
+      "Tree8Trunk": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Wood", "Color": [0.55, 0.35, 0.2], "Position": [90, 3, 40], "Size": [1.5, 6, 1.5] } },
+      "Tree8Leaves": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Grass", "Shape": "Ball", "Color": [0.25, 0.75, 0.3], "Position": [90, 8.5, 40], "Size": [8, 8, 8] } },
+      "Tree9Trunk": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Wood", "Color": [0.55, 0.35, 0.2], "Position": [-90, 3, 40], "Size": [1.5, 6, 1.5] } },
+      "Tree9Leaves": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Grass", "Shape": "Ball", "Color": [0.2, 0.7, 0.3], "Position": [-90, 8.5, 40], "Size": [8, 8, 8] } },
+      "Tree10Trunk": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Wood", "Color": [0.55, 0.35, 0.2], "Position": [90, 3, -40], "Size": [1.5, 6, 1.5] } },
+      "Tree10Leaves": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Grass", "Shape": "Ball", "Color": [0.2, 0.65, 0.35], "Position": [90, 8.5, -40], "Size": [8, 8, 8] } },
+      "Rock1": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Shape": "Ball", "Color": [0.6, 0.6, 0.6], "Position": [-80, 1, 60], "Size": [4, 3, 4] } },
+      "Rock2": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Shape": "Ball", "Color": [0.65, 0.65, 0.65], "Position": [80, 1, -60], "Size": [4, 3, 4] } },
+      "Rock3": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Shape": "Ball", "Color": [0.6, 0.6, 0.6], "Position": [-75, 1, -20], "Size": [3, 2.5, 3] } },
+      "Rock4": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Shape": "Ball", "Color": [0.65, 0.65, 0.65], "Position": [75, 1, 20], "Size": [3, 2.5, 3] } },
+      "Rock5": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Shape": "Ball", "Color": [0.6, 0.6, 0.6], "Position": [-45, 1, 95], "Size": [4, 3, 4] } },
+      "Rock6": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Shape": "Ball", "Color": [0.65, 0.65, 0.65], "Position": [45, 1, 95], "Size": [4, 3, 4] } },
+      "Rock7": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Shape": "Ball", "Color": [0.6, 0.6, 0.6], "Position": [-85, 1, 10], "Size": [3, 2.5, 3] } },
+      "Rock8": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Slate", "Shape": "Ball", "Color": [0.65, 0.65, 0.65], "Position": [85, 1, -10], "Size": [3, 2.5, 3] } },
+      "Lamp1Pole": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Metal", "Color": [0.2, 0.2, 0.2], "Position": [-8, 2.5, -60], "Size": [0.6, 5, 0.6] } },
+      "Lamp1Head": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Neon", "Color": [1, 0.9, 0.4], "Position": [-8, 5.4, -60], "Size": [1.6, 1, 1.6] } },
+      "Lamp2Pole": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Metal", "Color": [0.2, 0.2, 0.2], "Position": [8, 2.5, -20], "Size": [0.6, 5, 0.6] } },
+      "Lamp2Head": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Neon", "Color": [1, 0.9, 0.4], "Position": [8, 5.4, -20], "Size": [1.6, 1, 1.6] } },
+      "Lamp3Pole": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Metal", "Color": [0.2, 0.2, 0.2], "Position": [-8, 2.5, 20], "Size": [0.6, 5, 0.6] } },
+      "Lamp3Head": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Neon", "Color": [1, 0.9, 0.4], "Position": [-8, 5.4, 20], "Size": [1.6, 1, 1.6] } },
+      "Lamp4Pole": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Metal", "Color": [0.2, 0.2, 0.2], "Position": [8, 2.5, 60], "Size": [0.6, 5, 0.6] } },
+      "Lamp4Head": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Neon", "Color": [1, 0.9, 0.4], "Position": [8, 5.4, 60], "Size": [1.6, 1, 1.6] } },
+      "PinisiHull": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Wood", "Color": [0.5, 0.3, 0.15], "Position": [0, 1.8, -102], "Size": [18, 3, 7] } },
+      "PinisiDeck": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Wood", "Color": [0.65, 0.45, 0.25], "Position": [0, 3.5, -102], "Size": [18, 0.5, 7] } },
+      "PinisiMast": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Wood", "Color": [0.4, 0.25, 0.12], "Position": [0, 10.5, -102], "Size": [1, 14, 1] } },
+      "PinisiSailFront": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Fabric", "Color": [1, 0.95, 0.8], "Position": [-3, 9.5, -102], "Size": [9, 8, 0.4] } },
+      "PinisiSailRear": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Fabric", "Color": [1, 0.9, 0.7], "Position": [4.5, 8.5, -102], "Size": [6, 6, 0.4] } },
+      "PinisiFlag": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Fabric", "Color": [1, 0.2, 0.2], "Position": [1, 17, -102], "Size": [2.5, 1.2, 0.2] } },
+      "PinisiBow": { "$className": "Part", "$properties": { "Anchored": true, "Material": "Wood", "Color": [0.5, 0.3, 0.15], "Position": [-10, 2.5, -102], "Size": [3, 2, 5] } }
     },
     "Lighting": {
       "$properties": {
-        "Ambient": [
-          0,
-          0,
-          0
-        ],
-        "Brightness": 2,
+        "Ambient": [0.55, 0.55, 0.6],
+        "OutdoorAmbient": [0.65, 0.65, 0.7],
+        "Brightness": 3,
+        "ClockTime": 14,
         "GlobalShadows": true,
         "Outlines": false,
         "Technology": "Voxel"
       }
     },
     "SoundService": {
-      "$properties": {
-        "RespectFilteringEnabled": true
-      }
+      "$properties": { "RespectFilteringEnabled": true }
     }
   }
 }
